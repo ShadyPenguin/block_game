@@ -1,13 +1,15 @@
 $(function() {
   $('.movable').each(function(index,element) {
     this.setAttribute('identifier', index)
+    
+    var attrs = {}
+    attrs.left = $(element).offset().left;
+    attrs.top = $(element).offset().top;
+    attrs.right = attrs.left + width
+    attrs.bottom = attrs.top + height
+    attrs.index = index
 
-    var left = $(element).offset().left;
-    var top = $(element).offset().top;
-    var right = left + width
-    var bottom = top + height
-
-    totalObjects.push(new movableBox(left, top, right, bottom, index));
+    totalObjects.push(new movableBox(attrs));
   })
 
   $('.movable').draggable({ containment: "parent",
@@ -30,12 +32,12 @@ var totalObjects = [];
 var width = 98
 var height = 98
 
-function movableBox(left, top, right, bottom, index) {
-  this.identifier = index
-  this.left = left
-  this.top = top
-  this.right = right
-  this.bottom = bottom
+function movableBox(attrs) {
+  this.identifier = attrs.index
+  this.left = attrs.left
+  this.top = attrs.top
+  this.right = attrs.right
+  this.bottom = attrs.bottom
 }
 
 movableBox.prototype.updatePositionHorizontal = function(left) {
