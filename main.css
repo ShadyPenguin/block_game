@@ -6,10 +6,22 @@
   height: 200px;
 }
 
-.movable {
+.tile {
   border: 1px solid blue;
   float: left;
   width: 98px;
   height: 98px;
   background-color: white;
+}
+
+.right {
+
+}
+
+.empty {
+  border: 1px solid blue;
+  float: left;
+  width: 98px;
+  height: 98px;
+  background-color: black;
 }
