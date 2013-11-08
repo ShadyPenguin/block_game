@@ -1,4 +1,9 @@
 Block Game
 
-Exercise to practice jQuery UI draggable
-Goal: Have fun making a game, flex my JS muscles to improve my skills
+--Javascript Playground--
+
+Current Project: Ligts Out
+  -Classic Lights Out game
+
+Completed Project: Block Mover
+  -Moves blocks to empty space
