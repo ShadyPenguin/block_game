@@ -1,4 +1,5 @@
-Block Game
+# Block Mover
 
-Exercise to practice jQuery UI draggable
-Goal: Have fun making a game, flex my JS muscles to improve my skills
+#### Attempt to mimic the mechanics of a [Sliding Puzzle](http://en.wikipedia.org/wiki/Sliding_puzzle)
+
+Utilizes Javascript and jQuery
