@@ -1,9 +1,8 @@
-Block Game
+# Lights Out!
 
---Javascript Playground--
+### Attempt to mimic the original [Lights Out](http://en.wikipedia.org/wiki/Lights_Out_(game))
 
-Current Project: Ligts Out
-
-Completed Project: Block Mover
-
-To see repos of each project, go to respective branch.
+Utilizes
+* Object-Oriented Javascript
+* jQuery
+* Jasmine
