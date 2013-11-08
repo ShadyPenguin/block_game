@@ -1,4 +1,4 @@
-.outer-box {
+#outer-box {
   background-color: black;
   border: 5px solid gray;
   margin: 0 auto;
@@ -6,16 +6,16 @@
   height: 400px;
 }
 
-.tile {
+.on {
   border: 1px solid blue;
   position: relative;
   float: left;
   width: 98px;
   height: 98px;
-  background-color: white;
+  background-color: yellow;
 }
 
-.empty {
+.off {
   border: 1px solid blue;
   position: relative;
   float: left;

@@ -1,56 +1,53 @@
 $(function() {
-  establishBoard();
+  board.startGame();
 });
 
-var width = 100
-var height = 100
+// _____________ Board Stuff _____________
+board = {
+  tilesArray : [],
 
-function establishBoard() {
-  $('.outer-box').children().each(function(index, element) {
-    this.setAttribute('pos-left', $(element).offset().left);
-    this.setAttribute('pos-top',  $(element).offset().top);
-  })
-  declareMovable();
+  startGame : function() {
+    this.generate();
+  },
+
+  generate : function() {
+    var row = []
+    $('#outer-box').children().each(function() {
+      if(row.length < 4) {
+        row.push(new Tile);
+      } else {
+        board.tilesArray.push(row);
+        row = [];
+        row.push(new Tile);
+      }
+    });
+    this.tilesArray.push(row);
+    console.log(this.tilesArray)
+  },
+
+  render : function() {
+    $(this.tilesArray).each(function(index, element) {
+      $('#outer-box')
+    })
+  }
 }
 
-function declareMovable() {
-  $('.tile').each(function(index, tile) {
-    $(this).removeClass();
-    $(this).addClass('tile');
-    $(this).unbind();
-    var tileIsLeft  = parseInt($(tile).attr('pos-left')) + 100 == $('.empty').attr('pos-left')
-    var tileIsRight = parseInt($(tile).attr('pos-left')) - 100 == $('.empty').attr('pos-left')
-    var tileIsAbove = parseInt($(tile).attr('pos-top'))  + 100 == $('.empty').attr('pos-top')
-    var tileIsBelow = parseInt($(tile).attr('pos-top'))  - 100 == $('.empty').attr('pos-top')
-
-    var tileIsHorizontal = $(tile).attr('pos-top')  == $('.empty').attr('pos-top')
-    var tileIsVertical   = $(tile).attr('pos-left') == $('.empty').attr('pos-left')
-
-    if(tileIsLeft && tileIsHorizontal) {
-      $(this).addClass('move left');
-    }
-
-    else if(tileIsRight && tileIsHorizontal) {
-      $(this).addClass('move right');
-    }
-
-    else if(tileIsBelow && tileIsVertical) {
-      $(this).addClass('move down');
-    }
-
-    else if(tileIsAbove && tileIsVertical) {
-      $(this).addClass('move up');
-    }
-  });
-  moveBindings();
+// ______________ Tiles Stuff _____________
+function Tile() {
+  this.status = this.generateStatus();
 }
 
-function moveBindings() {
-  $('.move').on('click', function() {
-    $('.empty').removeClass('empty').addClass('tile');
-    $(this).removeClass('move tile');
-    $(this).removeClass();
-    $(this).addClass('empty');
-    declareMovable();
-  });
+Tile.prototype.generateStatus = function() {
+  return ['on', 'off'][Math.floor(Math.random()*2)]
 }
+
+Tile.prototype.toggleStatus = function() {
+  if(this.status === 'on') {
+    this.status = 'off';
+  } else {
+    this.status = 'on';
+  }
+}
+
+// ______________ Helper Functions ____________
+
