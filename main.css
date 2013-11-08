@@ -2,8 +2,8 @@
   background-color: black;
   border: 5px solid gray;
   margin: 0 auto;
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
 }
 
 .tile {
@@ -12,10 +12,6 @@
   width: 98px;
   height: 98px;
   background-color: white;
-}
-
-.right {
-
 }
 
 .empty {

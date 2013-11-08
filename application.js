@@ -8,14 +8,17 @@ var height = 100
 function establishBoard() {
   $('.outer-box').children().each(function(index, element) {
     this.setAttribute('pos-left', $(element).offset().left);
-    this.setAttribute('pos-top', $(element).offset().top);
+    this.setAttribute('pos-top',  $(element).offset().top);
   })
   declareMovable();
 }
 
 function declareMovable() {
   $('.tile').each(function(index, tile) {
-    var tileIsLeft  = parseInt($(tile).attr('pos-left')) + 100  == $('.empty').attr('pos-left')
+    $(this).removeClass();
+    $(this).addClass('tile');
+    $(this).unbind();
+    var tileIsLeft  = parseInt($(tile).attr('pos-left')) + 100 == $('.empty').attr('pos-left')
     var tileIsRight = parseInt($(tile).attr('pos-left')) - 100 == $('.empty').attr('pos-left')
     var tileIsAbove = parseInt($(tile).attr('pos-top'))  + 100 == $('.empty').attr('pos-top')
     var tileIsBelow = parseInt($(tile).attr('pos-top'))  - 100 == $('.empty').attr('pos-top')
@@ -23,21 +26,35 @@ function declareMovable() {
     var tileIsHorizontal = $(tile).attr('pos-top')  == $('.empty').attr('pos-top')
     var tileIsVertical   = $(tile).attr('pos-left') == $('.empty').attr('pos-left')
 
-    // declare class right movable
     if(tileIsLeft && tileIsHorizontal) {
-      $(this).addClass('move-right');
+      $(this).addClass('move left');
     }
-    // declare class left movable
+
     else if(tileIsRight && tileIsHorizontal) {
-      $(this).addClass('move-left');
+      $(this).addClass('move right');
     }
-    // decalre class up movable
+
     else if(tileIsBelow && tileIsVertical) {
-      $(this).addClass('move-up');
+      $(this).addClass('move down');
     }
-    // declare class down movable
+
     else if(tileIsAbove && tileIsVertical) {
-      $(this).addClass('move-down');
+      $(this).addClass('move up');
     }
   });
+  moveBindings();
 }
+
+function moveBindings() {
+  $('.move').on('click', function() {
+    $('.empty').removeClass('empty').addClass('tile');
+    $(this).removeClass('move tile');
+
+    animateFeature($(this).attr('class'), $(this))
+
+    $(this).removeClass();
+    $(this).addClass('empty');
+    declareMovable();
+  });
+}
+
