@@ -3,7 +3,7 @@ Block Game
 --Javascript Playground--
 
 Current Project: Ligts Out
-  -Classic Lights Out game
 
 Completed Project: Block Mover
-  -Moves blocks to empty space
+
+To see repos of each project, go to respective branch.
