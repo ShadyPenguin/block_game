@@ -8,6 +8,7 @@
 
 .tile {
   border: 1px solid blue;
+  position: relative;
   float: left;
   width: 98px;
   height: 98px;
@@ -16,6 +17,7 @@
 
 .empty {
   border: 1px solid blue;
+  position: relative;
   float: left;
   width: 98px;
   height: 98px;

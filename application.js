@@ -49,12 +49,8 @@ function moveBindings() {
   $('.move').on('click', function() {
     $('.empty').removeClass('empty').addClass('tile');
     $(this).removeClass('move tile');
-
-    animateFeature($(this).attr('class'), $(this))
-
     $(this).removeClass();
     $(this).addClass('empty');
     declareMovable();
   });
 }
-
