@@ -1,7 +1,5 @@
 # Javascript Playground 
 
-Each project is located on a branch.
-
 ### Current Project 
 [Lights Out!](https://github.com/ShadyPenguin/block_game/tree/lights_out)
 
