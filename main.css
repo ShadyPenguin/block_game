@@ -6,20 +6,18 @@
   height: 500px;
 }
 
-.on {
+.tile {
   border: 1px solid blue;
   position: relative;
   float: left;
   width: 98px;
-  height: 98px;
+  height: 98px;  
+}
+
+.on {
   background-color: yellow;
 }
 
 .off {
-  border: 1px solid blue;
-  position: relative;
-  float: left;
-  width: 98px;
-  height: 98px;
   background-color: black;
 }
