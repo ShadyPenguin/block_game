@@ -13,7 +13,7 @@ board = {
   generate : function() {
     var row = []
     $('#outer-box').children().each(function() {
-      if(row.length < 4) {
+      if(row.length < 5) {
         row.push(new Tile);
       } else {
         board.tilesArray.push(row);
