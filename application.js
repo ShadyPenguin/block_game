@@ -1,22 +1,22 @@
 $(function() {
-  var $tiles;
-  board.startGame();
+  var $tiles = $('#outer-box').children();
+  board.startGame($tiles);
 });
-
-// _____________ Board Stuff _____________
+ 
+// ______________ Board Stuff _____________
 board = {
   tilesArray : [],
-
-  startGame : function() {
-    $tiles = $('#outer-box').children();
-    this.size = $tiles.length;
+ 
+  startGame : function($el) {
+    this.$tiles = $el
+    this.size = this.$tiles.length;
     this.generate();
     this.render();
   },
-
+ 
   generate : function() {
     var row = [];
-    $tiles.each(function() {
+    this.$tiles.each(function() {
       if(row.length < 5) {
         row.push(new Tile);
       } else {
