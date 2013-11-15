@@ -17,15 +17,17 @@ board = {
 
   clickMe : function() {
     $('.tile').on('click', function() {
-      var index = $(this).data('index');
-      board.tilesArray[Math.floor(index/5)][index%5].toggleStatus();
+      var row = $(this).data('index')[0];
+      var col = $(this).data('index')[1];
+
+      board.tilesArray[row][col].toggleTiles(row,col);
       board.render();
     })
   },
  
   addIndex : function() {
     this.$tiles.each(function(index) {
-      $(this).data('index',index);
+      $(this).data('index',[Math.floor(index/5),index%5]);
     });
   },
 
@@ -67,7 +69,15 @@ Tile.prototype.generateStatus = function() {
   return ['on', 'off'][Math.floor(Math.random()*2)]
 }
 
-Tile.prototype.toggleStatus = function() {
+Tile.prototype.toggleTiles = function(row, col) {
+  this.toggleSelf();
+  this.toggleUp(row,col);
+  this.toggleDown(row,col);
+  this.toggleLeft(row,col);
+  this.toggleRight(row,col);
+}
+
+Tile.prototype.toggleSelf = function() {
   if(this.status === 'on') {
     this.status = 'off';
   } else {
@@ -75,5 +85,28 @@ Tile.prototype.toggleStatus = function() {
   }
 }
 
-// ______________ Helper Functions ____________
+Tile.prototype.toggleUp = function(row, col) {
+  if(col>0){
+    board.tilesArray[row][col-1].toggleSelf();
+  }
+}
+
+Tile.prototype.toggleDown = function(row, col) {
+  if(col<4){
+    board.tilesArray[row][col+1].toggleSelf();
+  }
+}
+
+Tile.prototype.toggleLeft = function(row, col) {
+  if(row>0){
+    board.tilesArray[row-1][col].toggleSelf();
+  }
+}
+
+Tile.prototype.toggleRight = function(row, col) {
+  if(row<4){
+    board.tilesArray[row+1][col].toggleSelf();
+  }
+}
+
 
