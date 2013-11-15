@@ -7,7 +7,9 @@ board = {
   tilesArray : [],
 
   startGame : function() {
+    this.size = $('#outer-box').children().length
     this.generate();
+    this.render();
   },
 
   generate : function() {
@@ -26,9 +28,9 @@ board = {
   },
 
   render : function() {
-    $(this.tilesArray).each(function(index, element) {
-      $('#outer-box')
-    })
+    for(var i=0;i<this.size;i++) {
+      $('#outer-box :nth-child('+i+')').addClass(this.tilesArray[Math.floor(i/5)][i%5].status);
+    }
   }
 }
 
