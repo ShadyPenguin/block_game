@@ -1,4 +1,5 @@
 $(function() {
+  var $tiles;
   board.startGame();
 });
 
@@ -7,14 +8,15 @@ board = {
   tilesArray : [],
 
   startGame : function() {
-    this.size = $('#outer-box').children().length
+    $tiles = $('#outer-box').children();
+    this.size = $tiles.length;
     this.generate();
     this.render();
   },
 
   generate : function() {
-    var row = []
-    $('#outer-box').children().each(function() {
+    var row = [];
+    $tiles.each(function() {
       if(row.length < 5) {
         row.push(new Tile);
       } else {
@@ -24,7 +26,6 @@ board = {
       }
     });
     this.tilesArray.push(row);
-    console.log(this.tilesArray)
   },
 
   render : function() {
