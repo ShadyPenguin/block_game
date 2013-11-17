@@ -1,7 +1,7 @@
 # Javascript Playground 
 
 ### Current Project 
-
+* Transfer Lights Out to fully-function Rails App
 
 ### Completed Projects:
 * [Block Mover](https://github.com/ShadyPenguin/block_game/tree/block_mover)
